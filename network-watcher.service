@@ -1,0 +1,13 @@
+[Unit]
+Description=Custom network interface watcher
+StartLimitBurst=15
+StartLimitIntervalSec=60
+After=systemd-networkd.service
+
+[Service]
+ExecStart=/usr/local/bin/network-watcher -interface-name="wlan0"
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
